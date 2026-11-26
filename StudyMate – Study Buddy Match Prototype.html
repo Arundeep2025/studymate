@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>StudyMate – Never study alone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F5FF;--surface:#fff;--ink:#17153B;--mute:#6B6990;--line:#E4E2F5;--acc:#5B4BEA;--onacc:#fff;--deep:#1E1B4B;--tint:#E8E5FF;--lime:#C6F54B;--stage:#E6E4F7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#100F24;--surface:#1B1940;--ink:#EEEDFF;--mute:#A9A7CF;--line:#2E2B63;--tint:#2B2766;--stage:#08071A;--acc:#8B7DFF;--onacc:#0E0B33}}
+:root[data-theme="dark"]{--bg:#100F24;--surface:#1B1940;--ink:#EEEDFF;--mute:#A9A7CF;--line:#2E2B63;--tint:#2B2766;--stage:#08071A;--acc:#8B7DFF;--onacc:#0E0B33}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:var(--stage);color:var(--ink);font:400 15px/1.45 'DM Sans',system-ui,sans-serif;display:flex;align-items:center;justify-content:center}
+h1,h2,h3,.disp{font-family:'Bricolage Grotesque','DM Sans',sans-serif;letter-spacing:-.02em}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+button:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.phone{width:100%;max-width:400px;height:100%;max-height:820px;background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+@media(min-width:520px){.phone{border-radius:38px;box-shadow:0 30px 80px rgba(0,0,0,.3);border:8px solid #0d0b26}}
+@media(min-width:900px){.phone{height:min(820px,94vh)}body{background:radial-gradient(circle at 25% 15%,#4a3fd0,var(--stage) 65%)}}
+.scroll{flex:1;overflow-y:auto;padding:20px 20px 100px}
+.row{display:flex;align-items:center;gap:12px}.sp{justify-content:space-between}
+.mute{color:var(--mute);font-size:13px}
+h1.t{font-size:28px;line-height:1.08}
+.av{width:46px;height:46px;border-radius:16px;background:var(--acc);color:var(--onacc);display:grid;place-items:center;font:800 16px 'Bricolage Grotesque';flex:none}
+.av.lg{width:76px;height:76px;border-radius:26px;font-size:26px}
+.hero{margin-top:18px;background:var(--deep);color:#fff;border-radius:28px;padding:22px;position:relative;overflow:hidden}
+.hero h2{font-size:30px;line-height:1.04;max-width:10ch}
+.hero p{opacity:.8;margin:8px 0 18px;max-width:24ch;font-size:14px}
+.hero .blob{position:absolute;right:-30px;top:-20px;width:150px;height:150px;border-radius:50%;background:var(--lime)}
+.hero .blob::after{content:"";position:absolute;inset:34px;border-radius:50%;background:var(--deep)}
+.hero .blob::before{content:"";position:absolute;width:26px;height:26px;border-radius:50%;background:var(--acc);left:6px;bottom:20px;z-index:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--lime);color:#17153B;font-weight:700;padding:15px 22px;border-radius:16px;min-height:50px}
+.btn.p{background:var(--acc);color:var(--onacc)}.btn.full{width:100%}.btn.ghost{background:var(--tint);color:var(--acc)}
+.btn:active{transform:scale(.97)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.stat,.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:14px}
+.card{margin-bottom:10px;width:100%;text-align:left}
+.stat b{font:800 28px 'Bricolage Grotesque';display:block;line-height:1}
+.sec{margin:22px 0 10px;font-size:19px}
+.grow{flex:1;min-width:0}.grow b{display:block}
+.tag{font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--tint);color:var(--acc);white-space:nowrap}
+.pct{font:800 18px 'Bricolage Grotesque';color:var(--acc);text-align:right}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none}
+.chip{flex:none;padding:9px 16px;border-radius:99px;border:1.5px solid var(--line);background:var(--surface);font-weight:700}
+.chip[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--onacc)}
+.lab{font-weight:700;margin:14px 0 2px}
+.back{margin-bottom:8px;color:var(--mute);font-weight:700;padding:6px 0}
+.dot{width:9px;height:9px;border-radius:50%;background:#2BC77B;display:inline-block;margin-right:6px;animation:b 1.6s infinite}
+@keyframes b{50%{opacity:.3}}
+.ringc{width:230px;height:230px;border-radius:50%;margin:18px auto;background:conic-gradient(var(--acc) var(--p),var(--line) 0);display:grid;place-items:center}
+.ringc div{width:196px;height:196px;border-radius:50%;background:var(--bg);display:grid;place-items:center;text-align:center}
+.ringc b{font:800 54px 'Bricolage Grotesque';line-height:1;display:block}
+.pair{display:flex;justify-content:center;align-items:center;gap:0;margin-top:6px}
+.pair .av{border:4px solid var(--bg)}.pair .av+.av{margin-left:-14px;background:var(--deep);color:#fff}
+.sw{width:54px;height:32px;border-radius:99px;background:var(--line);position:relative;flex:none;transition:.2s}
+.sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}
+.sw[aria-checked=true]{background:#2BC77B}.sw[aria-checked=true]::after{left:26px}
+nav{position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 8px calc(10px + env(safe-area-inset-bottom,0px))}
+nav button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;color:var(--mute);padding:6px 0;font-weight:500}
+nav button[aria-current=page]{color:var(--acc);font-weight:700}
+nav svg{width:24px;height:24px}
+.toast{position:absolute;left:20px;right:20px;bottom:96px;background:var(--ink);color:var(--bg);padding:14px 16px;border-radius:14px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:5}
+.toast.on{opacity:1;transform:none}
+@media(max-width:360px){.scroll{padding:16px 16px 100px}.hero h2{font-size:26px}.ringc{width:200px;height:200px}.ringc div{width:168px;height:168px}.ringc b{font-size:46px}}
+@media(max-height:700px){.ringc{margin:8px auto;width:180px;height:180px}.ringc div{width:150px;height:150px}.ringc b{font-size:40px}.hero{padding:16px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="phone"><div class="scroll" id="view"></div><nav id="nav"></nav><div class="toast" id="toast" role="status"></div></div>
+<script>
+const SUBJ=['Maths','Physics','Biology','English','Reasoning'],EX=['JEE','NEET','UPSC','Boards','SSC'],SL=['Morning','Afternoon','Evening','Night'];
+const B=[
+{id:1,n:'Neha Singh',s:'Maths',e:'JEE',sl:'Evening',md:'Online',c:'Lucknow',st:14,p:94,bio:'Solves 30 problems a day and likes to quiz each other at the end.'},
+{id:2,n:'Aarav Patel',s:'Maths',e:'Boards',sl:'Night',md:'Online',c:'Surat',st:6,p:90,bio:'Class 12 student. Prefers short 25-minute sessions with a 5-minute break.'},
+{id:3,n:'Ishita Rao',s:'Physics',e:'JEE',sl:'Morning',md:'Online',c:'Pune',st:21,p:93,bio:'Loves numericals. Happy to explain mechanics in return for help with optics.'},
+{id:4,n:'Faiz Khan',s:'Biology',e:'NEET',sl:'Evening',md:'Online',c:'Bhopal',st:9,p:91,bio:'Revises NCERT line by line. Looking for a partner to test diagrams.'},
+{id:5,n:'Divya Nair',s:'Biology',e:'NEET',sl:'Afternoon',md:'Online',c:'Kochi',st:30,p:95,bio:'30-day streak. Keeps a shared mistake notebook with her buddy.'},
+{id:6,n:'Rohit Das',s:'Reasoning',e:'SSC',sl:'Night',md:'Online',c:'Patna',st:11,p:88,bio:'Timed practice sets. Wants someone to race against and compare scores.'},
+{id:7,n:'Meera Joshi',s:'English',e:'UPSC',sl:'Morning',md:'Online',c:'Jaipur',st:17,p:92,bio:'Practises answer writing and swaps essays for feedback.'},
+{id:8,n:'Kabir Sethi',s:'Physics',e:'Boards',sl:'Evening',md:'Online',c:'Chandigarh',st:4,p:86,bio:'Needs a patient partner for derivations before the exam.'}];
+const S={tab:'home',subj:'Maths',ex:'JEE',slot:'Evening',bid:1,t:1500,run:false,min:140,streak:6,open:true};
+const $=s=>document.querySelector(s),v=$('#view');
+const ic={home:'<path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',match:'<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M17 4a4 4 0 010 8M22 21c0-3-2-5-4-5.5"/>',timer:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/>'};
+const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ic[k]}</svg>`;
+const ini=n=>n.split(' ').map(x=>x[0]).join(''),bud=()=>B.find(b=>b.id===S.bid);
+const mm=t=>String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2200)}
+const matches=()=>B.filter(b=>b.s===S.subj).map(b=>({...b,q:b.p-(b.sl===S.slot?0:8)-(b.e===S.ex?0:6)})).sort((a,b)=>b.q-a.q);
+const bc=b=>`<button class="card row" data-b="${b.id}"><div class="av">${ini(b.n)}</div><div class="grow"><b>${b.n}</b><span class="mute">${b.s} · ${b.e} · ${b.sl}</span><div><span class="tag">🔥 ${b.st}-day streak</span></div></div><div><div class="pct">${b.q||b.p}%</div><span class="mute">match</span></div></button>`;
+const ch=(arr,cur,k)=>`<div class="chips">${arr.map(x=>`<button class="chip" aria-pressed="${cur===x}" data-${k}="${x}">${x}</button>`).join('')}</div>`;
+const V={
+home:()=>`<div class="row sp"><div><span class="mute">Good evening, Ananya</span><h1 class="t">Study together,<br>score higher.</h1></div><div class="av">A</div></div>
+ <div class="hero"><div class="blob"></div><h2>Study alone? Not today.</h2><p>Get matched with someone studying the same thing, at the same time.</p><button class="btn" data-go="match">Find a buddy</button></div>
+ <div class="stats"><div class="stat"><b>🔥 ${S.streak}</b><span class="mute">day streak</span></div><div class="stat"><b>${Math.floor(S.min/60)}h ${S.min%60}m</b><span class="mute">studied this week</span></div></div>
+ <h3 class="sec">Today’s session</h3><div class="card row"><div class="av">NS</div><div class="grow"><b>Maths with Neha</b><span class="mute">7:00 PM · 25 min focus · Online</span></div><button class="btn p" style="min-height:42px;padding:10px 16px" data-go="session">Join</button></div>
+ <h3 class="sec">Buddies online now</h3>${B.slice(0,3).map(b=>`<button class="card row" data-b="${b.id}"><div class="av">${ini(b.n)}</div><div class="grow"><b>${b.n}</b><span class="mute"><i class="dot"></i>${b.s} · ${b.e}</span></div><span class="tag">View</span></button>`).join('')}`,
+match:()=>`<h1 class="t">Find your buddy</h1><p class="mute">Tell us what you’re studying</p>
+ <div class="lab">Subject</div>${ch(SUBJ,S.subj,'sj')}<div class="lab">Exam</div>${ch(EX,S.ex,'ex')}<div class="lab">When do you study?</div>${ch(SL,S.slot,'sl')}
+ <h3 class="sec">${matches().length} buddies match</h3>${matches().map(bc).join('')||'<div class="card"><b>No buddies yet</b><p class="mute">Try another subject.</p></div>'}`,
+buddy:()=>{const b=bud();return `<button class="back" data-go="match">‹ Back</button><div class="row"><div class="av lg">${ini(b.n)}</div><div><h1 class="t" style="font-size:24px">${b.n}</h1><span class="mute">${b.c} · ${b.md}</span><div style="margin-top:6px"><span class="tag">🔥 ${b.st}-day streak</span></div></div></div>
+ <div class="stats"><div class="stat"><b>${b.q||b.p}%</b><span class="mute">match with you</span></div><div class="stat"><b>${b.sl}</b><span class="mute">usual study time</span></div></div>
+ <h3 class="sec">Studying</h3><div class="chips" style="flex-wrap:wrap"><span class="tag">${b.s}</span><span class="tag">${b.e}</span></div>
+ <h3 class="sec">About</h3><p>${b.bio}</p>
+ <div class="card" style="margin-top:16px;background:var(--tint);border:0"><b>Why you match</b><p class="mute" style="margin-top:4px">Same subject and exam, and you both prefer ${b.sl.toLowerCase()} sessions.</p></div>
+ <button class="btn p full" style="margin-top:8px" data-study="${b.id}">Study together now</button>
+ <button class="btn ghost full" style="margin-top:10px" data-toast="Message sent to ${b.n.split(' ')[0]}">Send a message</button>`},
+session:()=>{const b=bud();return `<div class="row sp"><h1 class="t" style="font-size:26px">Focus room</h1><span class="tag"><i class="dot"></i>Live</span></div>
+ <div class="pair"><div class="av lg" style="width:60px;height:60px;border-radius:20px">A</div><div class="av lg" style="width:60px;height:60px;border-radius:20px">${ini(b.n)}</div></div>
+ <p class="mute" style="text-align:center;margin-top:8px">You and ${b.n.split(' ')[0]} · ${b.s}</p>
+ <div class="ringc" id="ring" style="--p:${(1500-S.t)/15}%"><div><span><b id="tm">${mm(S.t)}</b><span class="mute">${S.run?'Stay focused':S.t===1500?'Ready when you are':'Paused'}</span></span></div></div>
+ <div class="row" style="justify-content:center;gap:12px"><button class="btn p" style="min-width:150px" data-act="tg">${S.run?'Pause':S.t<1500?'Resume':'Start focus'}</button><button class="btn ghost" data-act="rs">Reset</button></div>
+ <div class="card row" style="margin-top:20px"><div class="grow"><b>${b.n.split(' ')[0]}’s timer is in sync</b><span class="mute">Both of you focus for 25 minutes, then take a 5-minute break.</span></div></div>`},
+me:()=>`<div class="row"><div class="av lg">A</div><div><h1 class="t" style="font-size:24px">Ananya Mehta</h1><span class="mute">Class 12 · JEE 2027</span></div></div>
+ <div class="card row sp" style="margin-top:20px"><div class="grow"><b>Open to study requests</b><span class="mute">${S.open?'Buddies can invite you':'You’re hidden from matches'}</span></div><button class="sw" role="switch" aria-checked="${S.open}" aria-label="Open to study requests" data-act="sw"></button></div>
+ <div class="stats"><div class="stat"><b>🔥 ${S.streak}</b><span class="mute">day streak</span></div><div class="stat"><b>${Math.floor(S.min/60)}h ${S.min%60}m</b><span class="mute">this week</span></div></div>
+ <h3 class="sec">Badges</h3><div class="chips" style="flex-wrap:wrap"><span class="tag">⚡ First session</span><span class="tag">🔥 5-day streak</span><span class="tag">🤝 3 buddies</span></div>
+ <h3 class="sec">I study</h3><div class="chips" style="flex-wrap:wrap"><span class="tag">Maths</span><span class="tag">Physics</span><span class="tag">JEE</span><span class="tag">Evening</span></div>`
+};
+function nav(){const on=k=>({home:['home'],match:['match','buddy'],session:['session'],me:['me']}[k].includes(S.tab))?'aria-current="page"':'';
+ const b=(k,l,i)=>`<button data-go="${k}" ${on(k)}>${svg(i)}${l}</button>`;
+ $('#nav').innerHTML=b('home','Home','home')+b('match','Match','match')+b('session','Focus','timer')+b('me','Profile','user')}
+function render(){v.innerHTML=V[S.tab]();nav()}
+function go(t){S.tab=t;render();v.scrollTop=0}
+setInterval(()=>{if(!S.run)return;S.t--;if(S.t<=0){S.run=false;S.t=1500;S.min+=25;toast('Session complete! +25 minutes studied');return S.tab==='session'&&render()}
+ const tm=$('#tm'),r=$('#ring');if(tm){tm.textContent=mm(S.t);r.style.setProperty('--p',(1500-S.t)/15+'%')}},1000);
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
+ if(d.go)return go(d.go);
+ if(d.sj){S.subj=d.sj;return render()}if(d.ex){S.ex=d.ex;return render()}if(d.sl){S.slot=d.sl;return render()}
+ if(d.b){S.bid=+d.b;return go('buddy')}
+ if(d.study){S.bid=+d.study;S.t=1500;S.run=true;return go('session')}
+ if(d.toast)return toast(d.toast);
+ if(d.act==='tg'){S.run=!S.run;return render()}
+ if(d.act==='rs'){S.run=false;S.t=1500;return render()}
+ if(d.act==='sw'){S.open=!S.open;return render()}});
+render();
+</script>
+</body>
+</html>
